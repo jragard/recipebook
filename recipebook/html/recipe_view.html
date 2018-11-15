@@ -1,0 +1,16 @@
+<body>
+
+    <h2>Recipe Book</h2>
+    <ul>
+        {% for item in data %}
+            <li>
+                {{ item.title }} -- by {{ item.author }}
+                <ul>
+                    <li>
+                        {{ item.body }}
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>

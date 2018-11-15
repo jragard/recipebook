@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from recipebook.views import recipe_view
+from recipebook.models import Author, RecipeItem
+
+admin.site.register(Author)
+admin.site.register(RecipeItem)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

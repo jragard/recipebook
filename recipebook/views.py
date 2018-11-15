@@ -4,8 +4,7 @@ from recipebook.models import RecipeItem
 
 
 def recipe_view(request):
-    html = """
-    oh I guess this maybe works?
-    """
 
-    return HttpResponse(html)
+    results = RecipeItem.objects.all()
+
+    return render(request, 'recipe_view.html', {'data':results})
