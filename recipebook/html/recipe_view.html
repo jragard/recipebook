@@ -4,12 +4,12 @@
     <ul>
         {% for item in data %}
             <li>
-                {{ item.title }} -- by {{ item.author }}
-                <ul>
+                <a href="/recipe/{{ item.id }}">{{ item.title }}</a>
+                <!-- <ul>
                     <li>
                         {{ item.body }}
                     </li>
-                </ul>
+                </ul> -->
             </li>
         {% endfor %}
     </ul>
