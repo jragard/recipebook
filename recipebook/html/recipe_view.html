@@ -5,12 +5,11 @@
         {% for item in data %}
             <li>
                 <a href="/recipe/{{ item.id }}">{{ item.title }}</a>
-                <!-- <ul>
-                    <li>
-                        {{ item.body }}
-                    </li>
-                </ul> -->
             </li>
         {% endfor %}
     </ul>
+
+    <a href="recipeadd/">Add a new recipe entry!</a>
+    <a href="authoradd/">Add a new author!</a>
+    <a href="logout/"><button type="button">Log Out</button></a>
 </body>

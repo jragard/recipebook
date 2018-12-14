@@ -16,7 +16,6 @@ class RecipeItem(models.Model):
     time_required = models.CharField(max_length=50)
     instructions = models.TextField(max_length=2000)
 
-
     def __str__(self):
         return self.title
 
