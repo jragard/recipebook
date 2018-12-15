@@ -8,7 +8,11 @@ from django.contrib.auth.models import User
 
 
 def recipe_view(request):
-
+        print(request.user.id)
+        print(Author.objects.all())
+        for x in Author.objects.all():
+                print(x.name)
+                print(x.id)
         results = RecipeItem.objects.all()
         return render(request, 'recipe_view.html', {'data': results})
 
@@ -38,14 +42,17 @@ def individual_view(request, recipe_pk):
 def author_view(request, author_pk):
 
         aut = Author.objects.all().values()
-        id = int(request.META['PATH_INFO'][-1])
-        author_pk = id
+        
+        for author_dict in aut:
+                if author_dict['id'] == author_pk:
+                        author_name = author_dict['name']
+                        author_bio = author_dict['bio']
 
         results = RecipeItem.objects.all().values().filter(author_id=author_pk)
 
         return render(request, 'author_view.html', {'data': results,
-                                                    'author': aut.values()[id - 1]['name'],
-                                                    'bio': aut.values()[id - 1]['bio']})
+                                                    'author': author_name,
+                                                    'bio': author_bio})
 
 
 @login_required()
@@ -59,7 +66,7 @@ def recipe_add(request):
 
                 if form.is_valid():
                         data = form.cleaned_data
-
+                        print(Author.objects.filter(id=data['author']).first())
                         RecipeItem.objects.create(
                                 title=data['title'],
                                 body=data['body'],

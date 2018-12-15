@@ -5,7 +5,6 @@ from recipebook.models import Author
 class RecipeAdd(forms.Form):
     def __init__(self, user, *args, **kwargs):
         super(RecipeAdd, self).__init__(*args, **kwargs)
-        # authors = [(a.id, a.name) for a in Author.objects.all()]
         self.fields['author'].choices = [(user.id, user.username)]
 
     title = forms.CharField(max_length=100)
